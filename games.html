@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>بازی‌ها - مسجد امام مهدی</title>
+    <style>
+      body {
+        font-family: "Tahoma", sans-serif;
+        background-color: #d0e8d0;
+        margin: 0;
+        padding: 0;
+        color: #333;
+        direction: rtl;
+      }
+      header {
+        background-color: #004d40;
+        color: gold;
+        text-align: center;
+        padding: 2rem;
+      }
+      nav {
+        background-color: #00695c;
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        padding: 1rem;
+      }
+      nav a {
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 1.2rem;
+      }
+      nav a:hover {
+        text-decoration: underline;
+      }
+      main {
+        background: white;
+        margin: 2rem auto;
+        padding: 2rem;
+        max-width: 900px;
+        border: 3px solid gold;
+        border-radius: 15px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+      }
+      h1,
+      h2 {
+        color: #00695c;
+      }
+      #gameArea {
+        position: relative;
+        width: 100%;
+        height: 400px;
+        background-color: #e0f7fa;
+        border: 2px dashed #00695c;
+        border-radius: 10px;
+        margin-top: 2rem;
+        overflow: hidden;
+      }
+      #moon {
+        width: 80px;
+        position: absolute;
+        top: 50px;
+        left: 50px;
+        cursor: pointer;
+      }
+      footer {
+        background-color: #004d40;
+        color: gold;
+        text-align: center;
+        padding: 1rem;
+        margin-top: 2rem;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>بازی‌های مسجد</h1>
+      <p>لحظاتی شاد در کنار خانواده!</p>
+    </header>
+
+    <nav>
+      <a href="index.html">خانه</a>
+      <a href="contact.html">تماس با ما</a>
+      <a href="games.html">بازی‌ها</a>
+    </nav>
+
+    <main>
+      <h2>بازی: ماه را شکار کن!</h2>
+      <p>روی ماه کلیک کن تا امتیاز بگیری!</p>
+
+      <div id="gameArea">
+        <img src="moon.png" alt="ماه" id="moon" />
+      </div>
+
+      <h3>امتیاز شما: <span id="score">0</span></h3>
+    </main>
+
+    <footer>&copy; ۲۰۲۵ مسجد امام مهدی (عج) - تمامی حقوق محفوظ است</footer>
+
+    <script>
+      const moon = document.getElementById("moon");
+      const scoreDisplay = document.getElementById("score");
+      let score = 0;
+
+      moon.addEventListener("click", () => {
+        score++;
+        scoreDisplay.textContent = score;
+        moveMoon();
+      });
+
+      function moveMoon() {
+        const gameArea = document.getElementById("gameArea");
+        const maxX = gameArea.clientWidth - moon.width;
+        const maxY = gameArea.clientHeight - moon.height;
+        const randomX = Math.floor(Math.random() * maxX);
+        const randomY = Math.floor(Math.random() * maxY);
+        moon.style.left = randomX + "px";
+        moon.style.top = randomY + "px";
+      }
+    </script>
+  </body>
+</html>
